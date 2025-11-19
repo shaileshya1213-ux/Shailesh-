@@ -1,0 +1,45 @@
+import math
+
+# -------- Using LIST to store basic operations --------
+basic_operations = ["add", "sub", "mul", "div"]
+
+# -------- Using TUPLE to store scientific operations --------
+scientific_operations = ("sin", "cos", "tan", "sqrt", "log", "pow")
+
+# -------- Using DICTIONARY to map operations to functions --------
+operations_dict = {
+    "add": lambda x, y: x + y,
+    "sub": lambda x, y: x - y,
+    "mul": lambda x, y: x * y,
+    "div": lambda x, y: x / y if y != 0 else "Error: Division by zero",
+
+    "sin": lambda x: math.sin(math.radians(x)),
+    "cos": lambda x: math.cos(math.radians(x)),
+    "tan": lambda x: math.tan(math.radians(x)),
+    "sqrt": lambda x: math.sqrt(x),
+    "log": lambda x: math.log(x),
+    "pow": lambda x, y: math.pow(x, y)
+}
+
+# -------- Program Starts --------
+print("Scientific Calculator")
+print("\nBasic operations:", basic_operations)
+print("Scientific operations:", scientific_operations)
+
+op = input("\nEnter operation: ").lower()
+
+# For operations needing 2 numbers
+if op in ["add", "sub", "mul", "div", "pow"]:
+    x = float(input("Enter first number: "))
+    y = float(input("Enter second number: "))
+    result = operations_dict[op](x, y)
+
+# For operations needing 1 number
+elif op in ["sin", "cos", "tan", "sqrt", "log"]:
+    x = float(input("Enter number: "))
+    result = operations_dict[op](x)
+
+else:
+    result = "Invalid Operation"
+
+print("Result =", result)
